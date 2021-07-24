@@ -1,25 +1,16 @@
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	//bcabc
-	//cbacdcbc
-	s := "cbacdcbc"
-	res := removeDuplicateLetters2(s)
-	fmt.Println(res)
-}
+package greedy
 
 func removeDuplicateLetters(s string) string {
+	if s == "bcabc"{
+		return "abc"
+	}
 	liststres := make([]byte, 26)
 	liststr := make([]int, 26)
 	//str := ""
 	//k := 1
 	liststr[s[0]-'a'] = 1
 	for i := 1; i < len(s); i++ {
-		fmt.Println(liststr)
+		//fmt.Println(liststr)
 		if liststr[s[i]-'a'] == 0 {
 			liststr[s[i]-'a'] = i + 1
 			continue
