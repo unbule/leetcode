@@ -13,6 +13,7 @@ func eventualSafeNodes(graph [][]int) (ans []int) {
 	var safe func(int) bool
 	safe = func(i int) bool {
 		if color[i] > 0 {
+			fmt.Println(":::", color[i])
 			return color[i] == 2
 		}
 		color[i] = 1
