@@ -1,28 +1,30 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "fmt"
 
 func main() {
-	nums := []int{0}
-	fmt.Println(wx(nums))
+	n := 102
+	fmt.Println(wx(n))
 }
 
-func wx(nums []int) int {
-	sort.Ints(nums)
-	n := len(nums)
+func wx(n int) int {
 	ans := 0
-	for len(nums) > 1 {
-		for i := 1; i < n; i += 2 {
-			ans = ans + (nums[i] - nums[i-1])
-			nums[i] = nums[i] ^ nums[i-1]
-			nums[i-1] = 0
+	flag := true
+	for i := 1; i <= n; i++ {
+		flag = true
+		point := make([]int, 10)
+		num := i
+		for num > 0 {
+			point[num%10] += 1
+			if point[num%10] > 1 {
+				flag = false
+				break
+			}
+			num = num / 10
 		}
-		sort.Ints(nums)
-		n = len(nums)
-		nums = nums[n/2:]
+		if flag {
+			ans++
+		}
 	}
 	return ans
 }
