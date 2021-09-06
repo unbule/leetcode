@@ -7,7 +7,7 @@ import (
 
 func main() {
 	nums := []int{-1, 0, 3, 5, 9, 12}
-	fmt.Println(search(nums, 9))
+	fmt.Println(search(nums, 5))
 }
 
 func search(nums []int, target int) int {
