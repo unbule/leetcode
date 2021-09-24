@@ -17,15 +17,13 @@ func smallestK(arr []int, k int) []int {
 	return arr[:k]
 }
 
-type hp struct {
-	sort.IntSlice
-}
+type hp struct{ sort.IntSlice }
 
 func (hp) Pop() (_ interface{}) { return }
-func (hp) Push(interface{})     {}
-func (h hp) Less(i, j int) bool {
-	return h.IntSlice[i] > h.IntSlice[j]
-}
+func (h *hp) Push(interface{})  {}
+
+//保证最大的元素出现在堆顶部
+func (h *hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
 
 func smallestK2(arr []int, k int) []int {
 	if k == 0 {
